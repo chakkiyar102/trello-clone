@@ -12,6 +12,15 @@ This guide documents the global MCP (Model Context Protocol) servers configured 
 - **Scope**: Global (available in all projects)
 - **Use Case**: Breaking down complex problems into step-by-step solutions
 
+### ⚠️ **2. Figma Server**
+- **Name**: `figma`
+- **Purpose**: Figma design integration and file management
+- **URL**: `https://mcp.figma.com/mcp` (HTTP transport)
+- **Status**: ⚠ Connected (Needs Authentication)
+- **Scope**: Global (available in all projects)
+- **Use Case**: Accessing and manipulating Figma designs and components
+- **Authentication**: OAuth with Figma account required
+
 ## 📋 MCP Server Management
 
 ### **Check Current Status**
@@ -130,6 +139,36 @@ claude mcp get server-name
 2. **Document Changes**: Track what servers you add and why
 3. **Version Control**: Consider committing `.mcp.json` for project-specific servers
 
+## 🔐 Figma Server Authentication
+
+The Figma MCP server requires OAuth authentication to access your Figma designs:
+
+### **Steps to Authenticate:**
+1. **Open Authentication Dialog**: Run `/mcp` in Claude Code
+2. **Select Figma Server**: Choose the `figma` server from the list
+3. **Sign in to Figma**: Use your Figma account credentials
+4. **Grant Permissions**: Allow necessary access to your designs and files
+5. **Verify Connection**: Server status will change from ⚠ to ✅
+
+### **Required Permissions:**
+- Read access to your Figma files
+- Design file manipulation
+- Component access
+- Team file access (if applicable)
+
+### **Figma Features Available:**
+- **Design File Access**: Browse and access your Figma files
+- **Component Extraction**: Get design components and assets
+- **Style Information**: Access colors, typography, and design tokens
+- **File Manipulation**: Create, read, update design files
+- **Collaboration Features**: Access team libraries and shared components
+
+### **Troubleshooting:**
+- If authentication fails, try removing and re-adding the server
+- Ensure you have the necessary permissions in your Figma account
+- Check that your Figma account has active team/file access
+- Some features may require Figma Professional or Team plan
+
 ## 📈 Future Enhancements
 
 ### **Planned Additions**
@@ -157,5 +196,5 @@ npx @modelcontextprotocol/create-server my-custom-server
 ---
 
 **Last Updated**: 2025-10-30
-**Working Global Servers**: 1
-**Total Configured**: 2 (1 global + 1 project-specific)
+**Working Global Servers**: 1 (1 ready, 1 needs auth)
+**Total Configured**: 3 (2 global + 1 project-specific)
